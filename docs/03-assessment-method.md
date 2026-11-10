@@ -45,9 +45,9 @@ The level is the **highest level whose gates are all satisfied**. It is *not* an
 | L2 User | ≥2 | ≥2 | – | ≥2 | ≥2 | E1 | any |
 | L3 Practitioner | ≥2 | ≥3 | ≥2 | ≥3 | ≥3 | E3 | any |
 | L4 Builder | ≥3 | ≥3 | ≥4 | ≥3 | ≥3 | E4 | ≥ Team |
-| L5 Leader | ≥3 | ≥3 | ≥3 | ≥4 | ≥4 | E4 | ≥ Organisation |
+| L5 Leader | ≥3 | ≥3 | ≥2 | ≥4 | ≥4 | E4 | ≥ Organisation |
 
-Note that L4 and L5 are not strictly nested on C: a person may meet L5 without meeting L4. The algorithm checks from L5 downward and returns the first level fully satisfied.
+Note that L4 and L5 are deliberately not nested: L4 demands building depth (C≥4), L5 demands judgment, responsibility and organisational scope (J≥4, R≥4). A person may meet L5 without meeting L4. The algorithm checks from L5 downward and returns the first level fully satisfied. Dimension scores for each instrument are computed by the deterministic rules in [assessment/scoring-rules.md](../assessment/scoring-rules.md).
 
 **Why gates instead of averages?** With averages, K2 A5 C4 J1 R1 (a productive but dangerous user) would score as a practitioner. With gates, this person is L1 with two risk flags — which is the truth an organisation needs.
 

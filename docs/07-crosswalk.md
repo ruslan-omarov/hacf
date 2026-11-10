@@ -9,8 +9,8 @@ HACF is designed to **interoperate**, not to replace. An organisation already us
 | Framework | Unit assessed | Main question | Relation to HACF |
 |---|---|---|---|
 | **DigComp 3.0** (EU JRC, Nov 2025) | Citizen | Digital competence across 21 competences, with AI integrated transversally | Broad digital base; HACF zooms into AI at work |
-| **SFIA** (AI & data literacy guidance) | Professional | Skills and responsibility levels for IT/digital work | HACF levels can be attached to SFIA skill profiles |
-| **Workplace AI literacy framework** (interface, 2025) | Employee | Literacy duties by role: baseline, operational, oversight | Closely aligned with HACF L1–L3 and the J dimension |
+| **SFIA** (skills framework and its AI-related guidance) | Professional | Skills and responsibility levels for IT/digital work | HACF levels can be attached to SFIA skill profiles |
+| **[Operational framework for AI literacy in the workplace](https://www.interface-eu.org/publications/ai-literacy-workplace-framework)** (interface, 2025) | Employee | Literacy duties by role: baseline, operational, oversight | Closely aligned with HACF L1–L3 and the J dimension |
 | **ASEAN AI literacy framework** | Citizen/learner | Basic → advanced use, adaptation, creation | Regional reference for education pipelines |
 | **Vendor certifications** (e.g. cloud AI practitioner/developer exams) | Individual | Knowledge of a vendor's AI services | Evidence for K and C (E2/E3), never a level by itself |
 | **Organisational AI maturity models** (e.g. cloud-provider generative AI maturity models) | Organisation | Readiness to adopt and scale AI | Paired with HACF via the enablement check ([04](04-enterprise.md)) |
@@ -39,3 +39,5 @@ HACF is designed to **interoperate**, not to replace. An organisation already us
 ## Using HACF with a job architecture
 
 Attach a target HACF profile to each role in your existing job architecture (SFIA, a corporate competency model, or grade structure). HACF then becomes one column in the competency matrix — not a parallel system.
+
+Full citations: [references.md](references.md).

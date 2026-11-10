@@ -118,9 +118,9 @@ The modes are cumulative: an L4 Builder still asks, collaborates and observes.
 - Builds people capability: target profiles, development programmes, AI Champions.
 - Can read and challenge technical proposals without being a builder.
 
-**Minimum gates:** K≥3, A≥3, C≥3, J≥4, R≥4. **Evidence ≥ E4. Scope ≥ Organisation.**
+**Minimum gates:** K≥3, A≥3, C≥2, J≥4, R≥4. **Evidence ≥ E4. Scope ≥ Organisation.**
 
-*Note.* L5 does not require C≥4. A leader must understand building well enough to judge it, not necessarily do it.
+*Note.* L5 requires C≥2 (has personally built and documented AI workflows), not C≥4. A leader must understand building well enough to judge it, not necessarily build for others. J and R carry the highest thresholds at this level because accountability does.
 
 ---
 
