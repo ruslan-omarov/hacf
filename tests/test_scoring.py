@@ -111,5 +111,18 @@ class TestAssess(unittest.TestCase):
             self.assertEqual(level, expected[p["id"]], p["id"])
 
 
+class TestTaskPack(unittest.TestCase):
+    """Every generated T1 variant must contain all defects, and missing them must change the answer."""
+
+    def test_trap_changes_recommendation(self):
+        import make_task_t1
+        for seed in range(60):
+            pack = make_task_t1.build(seed, 480, "KZT", 480.0)
+            k = pack["key"]
+            self.assertEqual([d["id"] for d in k["defects"]], ["D1", "D2", "D3", "D4", "D5", "D6"])
+            self.assertNotEqual(k["true_ranking"][0], k["naive_ranking_if_defects_missed"][0], seed)
+            self.assertIn("<!--", pack["note"])
+
+
 if __name__ == "__main__":
     unittest.main()
