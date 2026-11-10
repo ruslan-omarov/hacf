@@ -1,0 +1,70 @@
+id,department,role,K,A,C,J,R,evidence,scope
+P001,Finance,Analyst,1,3,2,4,2,E2,Self
+P002,Finance,Analyst,3,4,1,4,4,E4,Self
+P003,Finance,Analyst,2,4,1,3,2,E3,Team
+P004,Finance,Analyst,2,2,1,2,3,E4,Self
+P005,Finance,Analyst,2,3,1,3,3,E4,Self
+P006,Finance,Analyst,1,3,0,4,4,E2,Team
+P007,Finance,Analyst,2,4,1,2,3,E2,Self
+P008,Finance,Analyst,1,3,2,4,3,E1,Self
+P009,Finance,Analyst,3,3,1,4,3,E3,Self
+P010,Finance,Analyst,2,4,2,2,4,E2,Self
+P011,Finance,Analyst,1,4,0,4,3,E3,Team
+P012,Finance,Analyst,2,2,1,3,4,E2,Self
+P013,Finance,Analyst,2,4,2,3,3,E3,Team
+P014,Finance,Analyst,2,2,0,3,4,E3,Self
+P015,Sales,Customer-facing,2,3,1,1,1,E3,Self
+P016,Sales,Customer-facing,2,3,2,0,1,E2,Self
+P017,Sales,Customer-facing,1,3,2,1,1,E2,Self
+P018,Sales,Customer-facing,2,2,1,1,1,E1,Team
+P019,Sales,Customer-facing,2,3,1,0,0,E1,Self
+P020,Sales,Customer-facing,3,2,2,1,1,E1,Self
+P021,Sales,Customer-facing,3,3,1,1,0,E2,Self
+P022,Sales,Customer-facing,3,3,1,2,1,E3,Self
+P023,Sales,Customer-facing,3,4,1,0,1,E4,Team
+P024,Sales,Customer-facing,2,4,1,2,1,E3,Self
+P025,Sales,Customer-facing,3,3,1,0,0,E3,Self
+P026,Sales,Customer-facing,1,3,1,0,0,E3,Self
+P027,Sales,Customer-facing,2,3,1,0,1,E3,Self
+P028,Sales,Customer-facing,2,3,2,2,1,E3,Self
+P029,Sales,Customer-facing,2,4,1,0,2,E3,Team
+P030,Sales,Customer-facing,2,2,2,0,1,E4,Team
+P031,Sales,Customer-facing,1,3,2,1,2,E2,Team
+P032,Sales,Customer-facing,2,3,1,1,2,E3,Self
+P033,IT,Software engineer,3,3,3,3,3,E2,Self
+P034,IT,Software engineer,3,3,3,3,3,E3,Self
+P035,IT,Software engineer,2,4,4,3,2,E2,Team
+P036,IT,Software engineer,2,3,3,3,4,E4,Team
+P037,IT,Software engineer,2,3,3,3,4,E4,Self
+P038,IT,Software engineer,4,3,2,4,3,E3,Self
+P039,IT,Software engineer,3,4,3,4,3,E4,Self
+P040,IT,Software engineer,2,3,2,3,3,E1,Self
+P041,IT,Software engineer,3,3,2,4,3,E2,Self
+P042,IT,Software engineer,2,3,3,3,3,E2,Team
+P043,IT,Software engineer,3,3,3,2,2,E1,Team
+P044,IT,Software engineer,3,2,2,4,4,E2,Self
+P045,HR,HR professional,2,2,1,1,2,E2,Self
+P046,HR,HR professional,3,1,0,1,2,E3,Self
+P047,HR,HR professional,2,1,0,2,1,E4,Self
+P048,HR,HR professional,1,1,0,2,1,E2,Self
+P049,HR,HR professional,2,2,0,3,2,E2,Self
+P050,HR,HR professional,1,1,1,1,1,E1,Team
+P051,Operations,Knowledge worker,1,3,1,1,2,E3,Team
+P052,Operations,Knowledge worker,1,2,1,2,2,E4,Team
+P053,Operations,Knowledge worker,1,2,2,1,3,E4,Self
+P054,Operations,Knowledge worker,1,2,1,1,1,E2,Self
+P055,Operations,Knowledge worker,1,2,1,2,3,E1,Self
+P056,Operations,Knowledge worker,2,1,2,2,2,E4,Self
+P057,Operations,Knowledge worker,1,1,0,2,2,E1,Self
+P058,Operations,Knowledge worker,2,2,1,2,2,E3,Self
+P059,Operations,Knowledge worker,1,2,1,2,2,E4,Self
+P060,Operations,Knowledge worker,1,3,1,2,2,E4,Self
+P061,Legal,Legal & compliance,2,1,0,4,3,E1,Self
+P062,Legal,Legal & compliance,1,2,0,4,3,E2,Self
+P063,Legal,Legal & compliance,1,1,1,3,4,E2,Self
+P064,Legal,Legal & compliance,2,2,1,4,3,E3,Team
+P900,Executive,Executive,3,3,3,4,4,E4,Organisation
+P901,Executive,Executive,2,2,1,2,3,E2,Organisation
+P902,Executive,Executive,3,3,1,4,4,E4,Organisation
+P903,Executive,Executive,3,2,1,3,3,E3,Organisation
+P904,Executive,Executive,4,4,4,4,4,E5,Organisation
