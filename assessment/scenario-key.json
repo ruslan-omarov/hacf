@@ -1,0 +1,18 @@
+{
+  "_note": "Answer key and dimension mapping for the public reference items in question-bank.md §B. Private banks must use their own key.",
+  "B1": {"answer": "b", "dims": ["K"]},
+  "B2": {"answer": "c", "dims": ["K"]},
+  "B3": {"answer": "b", "dims": ["K"]},
+  "B4": {"answer": "c", "dims": ["J"]},
+  "B5": {"answer": "c", "dims": ["J"]},
+  "B6": {"answer": "c", "dims": ["J"]},
+  "B7": {"answer": "b", "dims": ["J"]},
+  "B8": {"answer": "b", "dims": ["R"]},
+  "B9": {"answer": "b", "dims": ["R"]},
+  "B10": {"answer": "b", "dims": ["R"]},
+  "B11": {"answer": "b", "dims": ["R"]},
+  "B12": {"answer": "b", "dims": ["J", "R"]},
+  "B13": {"answer": "b", "dims": ["K", "J"]},
+  "B14": {"answer": "c", "dims": ["R"]},
+  "B15": {"answer": "b", "dims": ["J"]}
+}

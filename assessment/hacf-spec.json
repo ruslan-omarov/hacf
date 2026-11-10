@@ -23,7 +23,7 @@
     {"level": 2, "name": "User", "mode": "Ask", "gates": {"K": 2, "A": 2, "J": 2, "R": 2}, "min_scope": "Self"},
     {"level": 3, "name": "Practitioner", "mode": "Collaborate", "gates": {"K": 2, "A": 3, "C": 2, "J": 3, "R": 3}, "min_scope": "Self"},
     {"level": 4, "name": "Builder", "mode": "Delegate & Orchestrate", "gates": {"K": 3, "A": 3, "C": 4, "J": 3, "R": 3}, "min_scope": "Team"},
-    {"level": 5, "name": "Leader", "mode": "Govern", "gates": {"K": 3, "A": 3, "C": 3, "J": 4, "R": 4}, "min_scope": "Organisation"}
+    {"level": 5, "name": "Leader", "mode": "Govern", "gates": {"K": 3, "A": 3, "C": 2, "J": 4, "R": 4}, "min_scope": "Organisation"}
   ],
   "flags": {
     "RISK-J": "A - J >= 2",
