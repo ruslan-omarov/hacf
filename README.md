@@ -5,6 +5,7 @@
 [![Version](https://img.shields.io/badge/version-0.1.0--public--draft-blue)](CHANGELOG.md)
 [![License: CC BY 4.0](https://img.shields.io/badge/framework-CC%20BY%204.0-lightgrey)](LICENSE)
 [![Code: MIT](https://img.shields.io/badge/tools-MIT-green)](LICENSE-CODE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24108829.svg)](https://doi.org/10.5281/zenodo.24108829)
 [![tests](https://github.com/ruslan-omarov/hacf/actions/workflows/tests.yml/badge.svg)](https://github.com/ruslan-omarov/hacf/actions/workflows/tests.yml)
 
 > Access to AI is becoming a commodity. The ability to use, direct, build and govern it is not.
@@ -120,7 +121,9 @@ HACF is **not** a certification and **not** a legal compliance guarantee. It is 
 
 See [CITATION.cff](CITATION.cff). Suggested form:
 
-> Omarov, R. (2026). *HACF — Human–AI Capability Framework* (Version 0.1.0) [Framework]. https://github.com/ruslan-omarov/hacf
+> Omarov, R. (2026). *HACF — Human–AI Capability Framework* (Version 0.1.0) [Framework]. Zenodo. https://doi.org/10.5281/zenodo.24108829
+
+The DOI above always resolves to the latest version; each release also has its own version DOI on Zenodo.
 
 ## License
 

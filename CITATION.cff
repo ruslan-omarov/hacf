@@ -8,6 +8,7 @@ authors:
     given-names: Ruslan
     # orcid: "https://orcid.org/0000-0000-0000-0000"
 version: 0.1.0
+doi: 10.5281/zenodo.24108829
 date-released: 2026-11-10
 license: CC-BY-4.0
 repository-code: "https://github.com/ruslan-omarov/hacf"

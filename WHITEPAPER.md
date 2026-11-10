@@ -74,4 +74,4 @@ Access to AI is converging; capability to use it well is diverging. Measuring th
 
 ---
 
-*Cite as:* Omarov, R. (2026). *HACF — Human–AI Capability Framework* (Version 0.1.0). https://github.com/ruslan-omarov/hacf
+*Cite as:* Omarov, R. (2026). *HACF — Human–AI Capability Framework* (Version 0.1.0). Zenodo. https://doi.org/10.5281/zenodo.24108829
