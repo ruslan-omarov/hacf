@@ -4,7 +4,7 @@
   "publication_type": "other",
   "description": "<p>An open, vendor-neutral framework for measuring and developing human capability to create value with artificial intelligence safely. Six levels defined by the person's relationship to AI (L0 Unaware to L5 Leader), five independently scored dimensions (Knowledge, Application, Creation, Judgment, Responsibility), gate-based level assignment, evidence-weighted scoring, enterprise metrics and a three-layer versioning model designed for long-term validity.</p>",
   "creators": [
-    {"name": "Omarov, Ruslan"}
+    {"name": "Omarov, Ruslan", "orcid": "0009-0002-0497-8017"}
   ],
   "license": "cc-by-4.0",
   "access_right": "open",

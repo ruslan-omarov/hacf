@@ -133,4 +133,4 @@ The DOI above always resolves to the latest version; each release also has its o
 
 ## Author
 
-**Ruslan Omarov** — author and maintainer. Contributions are welcome under the [governance model](GOVERNANCE.md).
+**Ruslan Omarov** ([ORCID 0009-0002-0497-8017](https://orcid.org/0009-0002-0497-8017)) — author and maintainer. Contributions are welcome under the [governance model](GOVERNANCE.md).
