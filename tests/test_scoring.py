@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from hacf_score import Scorer  # noqa: E402
+import hacf_assess  # noqa: E402
 
 SPEC = json.loads((ROOT / "assessment" / "hacf-spec.json").read_text(encoding="utf-8"))
 
@@ -34,6 +35,9 @@ class TestLevels(unittest.TestCase):
 
     def test_l5(self):
         self.assertEqual(run(3, 3, 3, 4, 4, "E4", "Organisation").level, 5)
+
+    def test_l5_does_not_require_builder_depth(self):
+        self.assertEqual(run(3, 3, 2, 4, 4, "E4", "Organisation").level, 5)
 
 
 class TestGatesNotAverages(unittest.TestCase):
@@ -64,6 +68,47 @@ class TestFlags(unittest.TestCase):
         self.assertEqual(r.level, 2)
         self.assertIn("CEILING", r.flags)
         self.assertEqual(r.next_gaps, {"C": 1})
+
+
+class TestRoleProfilesConsistent(unittest.TestCase):
+    """Every example role profile must produce its stated target level."""
+
+    def test_profiles_match_gates(self):
+        roles = json.loads((ROOT / "tools" / "sample" / "role_profiles.json").read_text(encoding="utf-8"))
+        for name, p in roles.items():
+            if name.startswith("_"):
+                continue
+            scores = {d: p.get(d, 0) for d in "KACJR"}
+            level = Scorer(SPEC).score("x", "d", name, scores, "E4", p["scope"]).level
+            self.assertEqual(level, p["target_level"], name)
+
+
+class TestAssess(unittest.TestCase):
+    KEY = json.loads((ROOT / "assessment" / "scenario-key.json").read_text(encoding="utf-8"))
+
+    def test_self_mapping(self):
+        self.assertEqual([hacf_assess.self_score(x) for x in (0.4, 1.0, 2.0, 3.0, 3.5)], [0, 1, 2, 3, 4])
+
+    def test_strongest_evidence_wins_and_ties_take_lower(self):
+        person = {"self": {"A4": 4, "A5": 4, "A6": 4},
+                  "tasks": [{"evidence": "E3", "scores": {"A": 3}},
+                            {"evidence": "E3", "scores": {"A": 2}}]}
+        scores, ev = hacf_assess.combine(person, self.KEY)
+        self.assertEqual((scores["A"], ev["A"]), (2, 3))
+
+    def test_scenario_never_above_3(self):
+        answers = {k: v["answer"] for k, v in self.KEY.items() if not k.startswith("_")}
+        out = hacf_assess.scenario_scores(answers, self.KEY)
+        self.assertEqual(out, {"K": 3, "J": 3, "R": 3})
+
+    def test_sample_end_to_end(self):
+        people = json.loads((ROOT / "tools" / "sample" / "raw_results.json").read_text(encoding="utf-8"))
+        expected = {"A-017": 3, "S-104": 1, "X-001": 5}
+        for p in people:
+            scores, ev = hacf_assess.combine(p, self.KEY)
+            e = hacf_assess.overall_evidence(scores, ev, SPEC, p["scope"])
+            level = Scorer(SPEC).score(p["id"], "", "", scores, e, p["scope"]).level
+            self.assertEqual(level, expected[p["id"]], p["id"])
 
 
 if __name__ == "__main__":
