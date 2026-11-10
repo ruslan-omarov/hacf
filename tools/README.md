@@ -1,6 +1,6 @@
 # HACF Tools
 
-Reference implementation of the [assessment method](../docs/03-assessment-method.md). Python 3.9+, standard library only. License: MIT.
+Reference implementation of the [assessment method](../docs/03-assessment-method.md). Python 3.11+ (tested in CI on 3.11 and 3.13), standard library only. License: MIT.
 
 Two scripts:
 
