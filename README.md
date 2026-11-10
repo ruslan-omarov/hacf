@@ -12,6 +12,8 @@
 
 🇷🇺 [Русская версия](README.ru.md)
 
+**▶ Try it in 15 minutes: [HACF Self-Check](https://ruslan-omarov.github.io/hacf/app/)** — free, bilingual (EN/RU), runs entirely in your browser.
+
 ---
 
 ## Why HACF exists
@@ -77,6 +79,7 @@ See [Enterprise application](docs/04-enterprise.md) and the [scoring tool](tools
 
 ## Use it in two weeks
 
+0. Let people try the [online self-check](https://ruslan-omarov.github.io/hacf/app/) first (provisional, max. L2); results download in the format the tools accept.
 1. Read the [Quick Start](docs/09-quick-start.md) — a day-by-day pilot for one team.
 2. Run the instruments: [self-assessment and scenario check](assessment/question-bank.md), [practical task](assessment/practical-tasks.md).
 3. Score deterministically: `python tools/hacf_assess.py raw.json --out people.csv` → `python tools/hacf_score.py people.csv --roles tools/sample/role_profiles.json --out report.md`.
@@ -103,6 +106,7 @@ See [Enterprise application](docs/04-enterprise.md) and the [scoring tool](tools
 | [docs/glossary.md](docs/glossary.md) | Terms |
 | [docs/references.md](docs/references.md) | Sources |
 | [assessment/](assessment/) | Question bank, practical tasks, deterministic scoring rules, machine-readable spec |
+| [app/](app/) | Online self-check, EN/RU ([live](https://ruslan-omarov.github.io/hacf/app/)) |
 | [tools/](tools/) | Open-source scoring script with sample data |
 | [templates/](templates/) | Individual and enterprise reports, privacy notice |
 
