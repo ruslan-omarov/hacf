@@ -97,7 +97,7 @@ class Scorer:
         if target is None:
             return None
         return {d: v - r.scores.get(d, 0) for d, v in target.items()
-                if not d.startswith("_") and r.scores.get(d, 0) < v}
+                if d in DIMS and r.scores.get(d, 0) < v}
 
 
 def read_people(path: Path) -> list[dict]:

@@ -2,10 +2,19 @@
 
 Reference implementation of the [assessment method](../docs/03-assessment-method.md). Python 3.9+, standard library only. License: MIT.
 
+Two scripts:
+
+- `hacf_assess.py` — raw instrument results (self-assessment, scenario answers, task and artefact rubric scores) → dimension scores and evidence level, following [scoring-rules.md](../assessment/scoring-rules.md).
+- `hacf_score.py` — dimension scores → levels, flags, gaps and the enterprise report.
+
 ## Quick start
 
 ```bash
 cd tools
+python hacf_assess.py sample/raw_results.json --out people_from_raw.csv
+python hacf_score.py people_from_raw.csv --roles sample/role_profiles.json --results results.csv
+
+# or score an existing table of dimension scores
 python hacf_score.py sample/people.csv \
   --roles sample/role_profiles.json \
   --out report.md --results results.csv
