@@ -21,3 +21,4 @@ jobs:
           python tools/hacf_assess.py tools/sample/raw_results.json --out /tmp/people.csv
           python tools/hacf_score.py /tmp/people.csv --roles tools/sample/role_profiles.json --out /tmp/report.md
           python tools/hacf_score.py tools/sample/people.csv --roles tools/sample/role_profiles.json --out /tmp/report2.md
+          python tools/make_task_t1.py --seed 1 --out /tmp/t1
