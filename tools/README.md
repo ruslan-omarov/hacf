@@ -6,6 +6,7 @@ Two scripts:
 
 - `hacf_assess.py` — raw instrument results (self-assessment, scenario answers, task and artefact rubric scores) → dimension scores and evidence level, following [scoring-rules.md](../assessment/scoring-rules.md).
 - `hacf_score.py` — dimension scores → levels, flags, gaps and the enterprise report.
+- `make_task_t1.py` — generates a unique practical task T1 pack with planted defects and a confidential assessor key (new seed per round).
 
 ## Quick start
 
