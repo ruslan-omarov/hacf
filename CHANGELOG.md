@@ -14,6 +14,7 @@ All notable changes to HACF are documented here. Versioning follows the [three-l
 - Quick start (two-week pilot), assessor guide with calibration, pre-registered validation protocol, worked example, privacy-notice template, references.
 - Continuous integration: unit tests, end-to-end sample run, and a consistency test that every example role profile produces its stated target level.
 
+- Practical task generator `tools/make_task_t1.py`: unique T1 packs per seed (dataset, market note, brief, confidential assessor key) with six planted defects; tested so that missing the defects always changes the recommendation.
 - Online self-check `app/index.html` (EN/RU), published via GitHub Pages: self-assessment and scenario check, provisional level capped at L2, risk flags, result download compatible with `tools/hacf_assess.py`. Scoring cross-checked against the Python reference on 302 random answer sets.
 
 ### Changed (before first release, after internal review)
