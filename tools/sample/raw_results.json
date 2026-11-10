@@ -1,0 +1,26 @@
+[
+  {
+    "id": "A-017", "department": "Finance", "role": "Analyst", "scope": "Self",
+    "self": {"A1": 3, "A2": 2, "A3": 3, "A4": 4, "A5": 3, "A6": 3, "A7": 3, "A8": 1, "A9": 1,
+             "A10": 3, "A11": 2, "A12": 2, "A13": 4, "A14": 3, "A15": 2},
+    "scenario": {"B1": "b", "B2": "c", "B3": "b", "B4": "c", "B5": "c", "B6": "a", "B7": "b",
+                 "B8": "b", "B9": "b", "B10": "b", "B11": "a", "B12": "b", "B13": "b", "B14": "c", "B15": "b"},
+    "tasks": [{"name": "T1", "evidence": "E3", "scores": {"A": 3, "J": 3, "R": 3}},
+              {"name": "T2", "evidence": "E3", "scores": {"A": 3, "C": 2, "J": 3, "R": 3}}]
+  },
+  {
+    "id": "S-104", "department": "Sales", "role": "Customer-facing", "scope": "Self",
+    "self": {"A1": 3, "A2": 3, "A3": 3, "A4": 4, "A5": 4, "A6": 4, "A7": 3, "A8": 2, "A9": 1,
+             "A10": 3, "A11": 3, "A12": 3, "A13": 3, "A14": 3, "A15": 3},
+    "scenario": {"B1": "a", "B2": "b", "B3": "b", "B4": "b", "B5": "c", "B6": "d", "B7": "a",
+                 "B8": "d", "B9": "a", "B10": "b", "B11": "a", "B12": "a", "B13": "a", "B14": "a", "B15": "a"},
+    "tasks": [{"name": "T1", "evidence": "E3", "scores": {"A": 4, "J": 1, "R": 1}}]
+  },
+  {
+    "id": "X-001", "department": "Executive", "role": "Executive", "scope": "Organisation",
+    "scenario": {"B1": "b", "B2": "c", "B3": "b", "B4": "c", "B5": "c", "B6": "c", "B7": "b",
+                 "B8": "b", "B9": "b", "B10": "b", "B11": "b", "B12": "b", "B13": "b", "B14": "c", "B15": "b"},
+    "tasks": [{"name": "T4", "evidence": "E3", "scores": {"K": 3, "A": 3, "J": 4, "R": 4}}],
+    "artefacts": [{"name": "AI portfolio decision record", "evidence": "E4", "scores": {"K": 3, "A": 3, "C": 2, "J": 4, "R": 4}}]
+  }
+]

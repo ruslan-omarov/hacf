@@ -13,7 +13,7 @@
 | One step from next level (CEILING) | 46% |
 | Builder density (L4+ per 100) | 2.9 |
 | Evidence quality (E3+) | 55% |
-| Role coverage (meets target profile) | 7% of 69 with known role |
+| Role coverage (meets target profile) | 6% of 69 with known role |
 
 ## Level distribution
 
@@ -45,8 +45,8 @@ Groups smaller than 5 are suppressed.
 | Dimension | People below target |
 |---|---|
 | R — Responsibility | 34 |
+| C — Creation | 34 |
 | J — Judgment | 33 |
-| C — Creation | 29 |
 | K — Knowledge | 27 |
 | A — Application | 18 |
 

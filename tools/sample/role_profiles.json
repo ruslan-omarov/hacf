@@ -1,15 +1,116 @@
 {
-  "_note": "Non-normative example targets. Adapt to your organisation. See docs/05-role-profiles.md",
-  "Baseline": {"K": 1, "J": 1, "R": 1},
-  "Knowledge worker": {"K": 2, "A": 2, "J": 2, "R": 2},
-  "Customer-facing": {"K": 2, "A": 2, "J": 3, "R": 3},
-  "Analyst": {"K": 2, "A": 3, "C": 2, "J": 3, "R": 3},
-  "Legal & compliance": {"K": 3, "A": 3, "C": 1, "J": 4, "R": 4},
-  "HR professional": {"K": 2, "A": 3, "C": 2, "J": 3, "R": 4},
-  "People manager": {"K": 2, "A": 3, "C": 1, "J": 3, "R": 3},
-  "Software engineer": {"K": 3, "A": 3, "C": 4, "J": 3, "R": 3},
-  "AI builder": {"K": 3, "A": 3, "C": 4, "J": 3, "R": 3},
-  "AI operator (high-risk)": {"K": 3, "A": 3, "C": 1, "J": 4, "R": 4},
-  "IT & security lead": {"K": 4, "A": 3, "C": 3, "J": 4, "R": 4},
-  "Executive": {"K": 3, "A": 3, "C": 1, "J": 4, "R": 4}
+  "_note": "Non-normative example targets. 'target_level' is what the gates produce for this profile at the stated scope; a test keeps them consistent. See docs/05-role-profiles.md",
+  "Baseline": {
+    "K": 1,
+    "J": 1,
+    "R": 1,
+    "target_level": 1,
+    "scope": "Self"
+  },
+  "Knowledge worker": {
+    "K": 2,
+    "A": 2,
+    "J": 2,
+    "R": 2,
+    "target_level": 2,
+    "scope": "Self"
+  },
+  "Customer-facing": {
+    "K": 2,
+    "A": 2,
+    "J": 3,
+    "R": 3,
+    "target_level": 2,
+    "scope": "Self"
+  },
+  "Analyst": {
+    "K": 2,
+    "A": 3,
+    "C": 2,
+    "J": 3,
+    "R": 3,
+    "target_level": 3,
+    "scope": "Self"
+  },
+  "Legal & compliance": {
+    "K": 3,
+    "A": 3,
+    "C": 2,
+    "J": 4,
+    "R": 4,
+    "target_level": 3,
+    "scope": "Self"
+  },
+  "HR professional": {
+    "K": 2,
+    "A": 3,
+    "C": 2,
+    "J": 3,
+    "R": 4,
+    "target_level": 3,
+    "scope": "Self"
+  },
+  "People manager": {
+    "K": 2,
+    "A": 3,
+    "C": 2,
+    "J": 3,
+    "R": 3,
+    "target_level": 3,
+    "scope": "Team"
+  },
+  "Software engineer": {
+    "K": 3,
+    "A": 3,
+    "C": 4,
+    "J": 3,
+    "R": 3,
+    "target_level": 4,
+    "scope": "Team"
+  },
+  "AI builder": {
+    "K": 3,
+    "A": 3,
+    "C": 4,
+    "J": 3,
+    "R": 3,
+    "target_level": 4,
+    "scope": "Team"
+  },
+  "AI operator (high-risk)": {
+    "K": 3,
+    "A": 3,
+    "C": 1,
+    "J": 4,
+    "R": 4,
+    "target_level": 2,
+    "scope": "Self"
+  },
+  "IT & security lead": {
+    "K": 4,
+    "A": 3,
+    "C": 4,
+    "J": 4,
+    "R": 4,
+    "target_level": 4,
+    "scope": "Team"
+  },
+  "Executive": {
+    "K": 3,
+    "A": 3,
+    "C": 2,
+    "J": 4,
+    "R": 4,
+    "target_level": 5,
+    "scope": "Organisation"
+  },
+  "Chief AI / Digital Officer": {
+    "K": 4,
+    "A": 3,
+    "C": 3,
+    "J": 4,
+    "R": 4,
+    "target_level": 5,
+    "scope": "Organisation"
+  }
 }
