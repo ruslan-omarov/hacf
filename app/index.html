@@ -5,135 +5,226 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>HACF Self-Check — Human–AI Capability Framework</title>
 <meta name="description" content="Free 15-minute self-check of your capability to work with AI: five dimensions, provisional HACF level, risk flags. Runs entirely in your browser.">
+<meta property="og:title" content="HACF Self-Check — what can you actually do with AI?">
+<meta property="og:description" content="Thirty questions, fifteen minutes, a five-dimension profile. Open framework, runs in your browser.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,3 28.4,12 23.7,26.6 8.3,26.6 3.6,12' fill='%235266eb'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* Light: research notebook (paper, hairlines, pills). Dark: blue-hour graphite. One accent: cobalt. */
 :root{
-  --paper:#F2F4F6; --surface:#FFFFFF; --ink:#18212C; --muted:#5A6573; --line:#D5DBE2;
-  --teal:#0E5E6F; --teal-soft:#DCEBEE; --risk:#B4232C; --risk-soft:#F6DEDF; --ok:#2E7A4E;
-  color-scheme: light;
+  --canvas:#ffffff; --card:#ffffff; --sunk:#f4f4f6; --ink:#0d0d12; --soft:#5f5f6b; --faint:#8f8f99;
+  --line:rgba(0,0,0,.12); --line-strong:rgba(0,0,0,.28); --hover:rgba(0,0,0,.04);
+  --accent:#3e50d8; --accent-ink:#ffffff; --accent-wash:rgba(62,80,216,.08);
+  --risk:#b4232c; --risk-wash:rgba(180,35,44,.06);
+  --r-card:6px; --r-pill:9999px;
+  color-scheme:light;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme: dark){
-  :root{ --paper:#11171D; --surface:#1A222B; --ink:#E7ECF1; --muted:#9AA6B3; --line:#2E3A46;
-    --teal:#5FB7C7; --teal-soft:#16343B; --risk:#EF7C83; --risk-soft:#3A1E21; --ok:#6CC28F; color-scheme:dark; }
+  :root{ --canvas:#171721; --card:#1e1e2a; --sunk:#272735; --ink:#ededf3; --soft:#c3c3cc; --faint:#8a8a98;
+    --line:rgba(237,237,243,.14); --line-strong:rgba(237,237,243,.4); --hover:rgba(237,237,243,.05);
+    --accent:#6d7ff0; --accent-ink:#0f1230; --accent-wash:rgba(109,127,240,.14);
+    --risk:#f08a90; --risk-wash:rgba(240,138,144,.08); --r-card:12px; color-scheme:dark; }
 }
 *,*::before,*::after{box-sizing:inherit}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
-h1,h2,h3{font-family:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;font-weight:600;line-height:1.15;margin:0}
-.wrap{max-width:46rem;margin:0 auto;padding:2rem 1.25rem 4rem}
-header.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:2.5rem}
-.brand{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:600;font-size:1rem;color:var(--muted)}
-.brand a{color:inherit}
-.lang{display:flex;flex-shrink:0;border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.lang button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:.9rem;padding:.3rem .7rem;cursor:pointer}
-.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.hero h1{font-size:clamp(2.1rem,6vw,3.2rem);margin-bottom:1rem;max-width:18ch}
-.hero p{color:var(--muted);max-width:60ch;margin:0 0 1rem}
-.privacy{font-size:.92rem;border-left:3px solid var(--teal);padding:.2rem 0 .2rem .9rem;color:var(--muted)}
-.btn{display:inline-block;border:0;border-radius:6px;background:var(--teal);color:#fff;font:600 1rem "IBM Plex Sans",sans-serif;padding:.8rem 1.4rem;cursor:pointer;text-decoration:none}
-@media (prefers-color-scheme: dark){.btn{color:#0B1A1E}}
-.btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn:focus-visible,.lang button:focus-visible,input:focus-visible+span{outline:3px solid var(--teal);outline-offset:2px}
-.progress{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);padding:.75rem 0;margin-bottom:1rem;border-bottom:1px solid var(--line)}
-.progress .bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden}
-.progress .fill{height:100%;background:var(--teal);width:0;transition:width .2s}
-.progress .meta{display:flex;justify-content:space-between;font-size:.88rem;color:var(--muted);margin-top:.35rem}
-section.part{margin:2.5rem 0}
-section.part>h2{font-size:1.6rem;margin-bottom:.4rem}
-section.part>p.lead{color:var(--muted);margin:0 0 1.5rem}
-.q{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.1rem 1.2rem;margin-bottom:.9rem}
-.q legend{font-weight:500;padding:0;margin-bottom:.8rem;float:left;width:100%}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{margin:0;background:var(--canvas);color:var(--ink);font:400 17px/1.65 "Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:-.01em;font-feature-settings:"calt","liga";-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-weight:500;line-height:1.16}
+a{color:inherit;text-underline-offset:3px;text-decoration-color:var(--line-strong)}
+a:hover{text-decoration-color:currentColor}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.narrow{max-width:720px;margin:0 auto}
+/* top bar */
+.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--canvas) 86%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:500;font-size:15px}
+.mark svg{width:22px;height:22px;flex-shrink:0}
+.mark small{color:var(--soft);font-weight:400}
+.top-actions{display:flex;align-items:center;gap:8px}
+.lang{display:flex;border:1px solid var(--line);border-radius:var(--r-pill);padding:2px}
+.lang button{border:0;background:transparent;color:var(--soft);font:500 13px/1 inherit;font-family:inherit;padding:7px 12px;border-radius:var(--r-pill);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--canvas)}
+.ghost{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:var(--r-pill);padding:7px 14px;font-size:13px;font-weight:500;text-decoration:none;color:var(--ink)}
+.ghost:hover{background:var(--hover)}
+@media (max-width:560px){.mark small,.top .ghost{display:none}}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:var(--r-pill);background:var(--accent);color:var(--accent-ink);font:500 16px/1 inherit;font-family:inherit;padding:15px 26px;cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+.btn.quiet{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.quiet:hover{background:var(--hover);filter:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding:72px 0 64px}
+.hero h1{font-size:clamp(40px,6.2vw,64px);letter-spacing:-.035em;line-height:1.04;margin-bottom:24px;max-width:12ch}
+.lede{font-size:19px;line-height:1.55;color:var(--soft);max-width:34em;margin:0 0 32px}
+.hero .actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.meta-line{font-size:14px;color:var(--soft)}
+.ladder{width:100%;height:auto}
+.ladder .step{fill:var(--card);stroke:var(--line-strong);stroke-width:1}
+.ladder .step.reach{fill:var(--accent-wash);stroke:var(--accent)}
+.ladder text{font-family:inherit;fill:var(--ink)}
+.ladder .lvl{font-size:13px;font-weight:600}
+.ladder .nm{font-size:13px;fill:var(--soft)}
+.ladder .note{font-size:12px;fill:var(--accent)}
+@media (max-width:860px){.hero{grid-template-columns:1fr;gap:40px;padding:48px 0}.hero h1{max-width:none}}
+/* how */
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding:40px 0 80px;border-top:1px solid var(--line)}
+.how h3{font-size:17px;margin:10px 0 6px}
+.how p{margin:0;color:var(--soft);font-size:15px;line-height:1.55}
+.how .n{font-size:13px;color:var(--faint);font-weight:500}
+.privacy-note{display:flex;gap:12px;align-items:flex-start}
+.privacy-note svg{width:20px;height:20px;flex-shrink:0;margin-top:3px;stroke:var(--accent)}
+@media (max-width:760px){.how{grid-template-columns:1fr;gap:24px}}
+/* form */
+.progress{position:sticky;top:64px;z-index:9;background:var(--canvas);padding:12px 0 14px}
+.progress .bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+.progress .fill{height:100%;background:var(--accent);width:0;transition:width .25s ease}
+.progress .meta{display:flex;justify-content:space-between;font-size:13px;color:var(--soft);margin-top:8px}
+.part{padding:40px 0 8px}
+.part h2{font-size:28px;letter-spacing:-.02em;margin-bottom:8px}
+.part .lead{color:var(--soft);margin:0 0 28px;font-size:16px}
+.q{border-top:1px solid var(--line);padding:22px 0 24px}
 .q fieldset{border:0;margin:0;padding:0;min-width:0}
-.q .num{color:var(--muted);font-weight:400;margin-right:.35rem}
-.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem;clear:both}
-.scale label,.opts label{position:relative;cursor:pointer}
+.q legend{float:left;width:100%;padding:0;margin-bottom:14px;font-weight:500;font-size:17px;line-height:1.45}
+.q .num{display:inline-block;min-width:2.6em;color:var(--faint);font-weight:500;font-size:14px}
+.scale,.opts{clear:both}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.opts{display:grid;gap:8px}
+.scale label,.opts label{position:relative;cursor:pointer;display:block}
 .scale input,.opts input{position:absolute;opacity:0;width:1px;height:1px}
-.scale span{display:block;text-align:center;border:1px solid var(--line);border-radius:6px;padding:.45rem .2rem;font-size:.85rem;line-height:1.25}
-.scale span b{display:block;font-size:1.05rem}
-.opts{display:grid;gap:.45rem;clear:both}
-.opts span{display:block;border:1px solid var(--line);border-radius:6px;padding:.55rem .8rem;font-size:.95rem}
-.scale input:checked+span,.opts input:checked+span{border-color:var(--teal);background:var(--teal-soft);box-shadow:inset 0 0 0 1px var(--teal)}
-.actions{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;margin-top:1.5rem}
-.hint{font-size:.9rem;color:var(--muted)}
+.scale span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:62px;border:1px solid var(--line);border-radius:var(--r-card);padding:8px 4px;text-align:center;font-size:12.5px;line-height:1.2;color:var(--soft)}
+.scale span b{font-size:17px;font-weight:500;color:var(--ink)}
+.opts span{display:block;border:1px solid var(--line);border-radius:var(--r-card);padding:12px 16px;font-size:15.5px;line-height:1.45}
+.scale label:hover span,.opts label:hover span{background:var(--hover)}
+.scale input:checked+span,.opts input:checked+span{border-color:var(--accent);background:var(--accent-wash);box-shadow:inset 0 0 0 1px var(--accent);color:var(--ink)}
+.scale input:focus-visible+span,.opts input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.submit-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;padding:32px 0 96px;border-top:1px solid var(--line)}
+.hint{font-size:14px;color:var(--soft)}
+@media (max-width:520px){.scale{gap:5px}.scale span{font-size:10.5px;min-height:58px}}
 /* result */
-#result{display:none}
+#result{display:none;padding:56px 0 40px}
 #result.show{display:block}
-.notation{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:600;font-size:clamp(1.6rem,6.5vw,2.6rem);line-height:1.1;letter-spacing:-.01em;margin:.5rem 0 .3rem;word-break:break-word}
-.notation .lvl{color:var(--teal)}
-.sub{color:var(--muted);margin:0 0 2rem}
-.gates{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.2rem 1.2rem .6rem}
-.gates h3{font-size:1.15rem;margin-bottom:1rem}
-.dim{display:grid;grid-template-columns:8.5rem 1fr 2rem;align-items:center;gap:.8rem;margin-bottom:.9rem}
-.dim .name{font-size:.95rem}
-.dim .name small{display:block;color:var(--muted);font-size:.78rem}
-.track{position:relative;height:14px;background:var(--line);border-radius:7px}
-.track .val{position:absolute;inset:0 auto 0 0;border-radius:7px;background:var(--teal)}
-.track .gate{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--ink)}
-.dim .score{font-weight:600;text-align:right}
-.legend{font-size:.82rem;color:var(--muted);margin:.4rem 0 .6rem}
-.flags{margin:1.5rem 0;display:grid;gap:.7rem}
-.flag{border-radius:8px;padding:.9rem 1rem;border:1px solid var(--line);background:var(--surface)}
-.flag.risk{border-color:var(--risk);background:var(--risk-soft)}
-.flag strong{display:block;margin-bottom:.15rem}
-.next{margin-top:2rem}
-.next h3{font-size:1.25rem;margin-bottom:.6rem}
-.next ol{padding-left:1.2rem;margin:0}
-.next li{margin-bottom:.5rem}
-footer{margin-top:4rem;font-size:.88rem;color:var(--muted);border-top:1px solid var(--line);padding-top:1.2rem}
-footer a,.wrap a{color:var(--teal)}
-@media (max-width:520px){.scale span{font-size:.72rem}.dim{grid-template-columns:6.5rem 1fr 1.6rem}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.r-head{display:grid;grid-template-columns:1fr 440px;gap:48px;align-items:center}
+.kicker{font-size:15px;color:var(--soft);margin:0 0 10px}
+.notation{font-size:clamp(28px,4.3vw,46px);letter-spacing:-.035em;line-height:1.06;font-weight:500;margin:0 0 14px;word-break:break-word}
+.notation .lvl{color:var(--accent)}
+.r-sub{color:var(--soft);margin:0}
+.radar{width:100%;height:auto;max-width:440px;display:block;margin:0 auto}
+.radar .grid{fill:none;stroke:var(--line)}
+.radar .axis{stroke:var(--line)}
+.radar .gate{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 4;opacity:.75}
+.radar .you{fill:var(--accent-wash);stroke:var(--accent);stroke-width:2}
+.radar .dot{fill:var(--accent)}
+.radar text{font-family:inherit;font-size:13px;fill:var(--soft)}
+.radar .lab{fill:var(--ink);font-weight:500;font-size:14px}
+.r-legend{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--soft);margin-top:4px;justify-content:center}
+.r-legend i{display:inline-block;width:18px;height:0;vertical-align:middle;margin-right:6px;border-top:2px solid var(--accent)}
+.r-legend i.g{border-top:2px dashed var(--ink);opacity:.75}
+@media (max-width:860px){.r-head{grid-template-columns:1fr;gap:32px}}
+.dims{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r-card);margin:40px 0 0;overflow:hidden}
+.dims div{padding:18px 18px 16px;border-left:1px solid var(--line)}
+.dims div:first-child{border-left:0}
+.dims b{display:block;font-size:30px;font-weight:500;letter-spacing:-.03em;line-height:1.1}
+.dims b small{font-size:15px;color:var(--faint);font-weight:400}
+.dims span{display:block;font-size:14px;font-weight:500;margin-top:6px}
+.dims em{display:block;font-style:normal;font-size:12.5px;color:var(--soft);line-height:1.4;margin-top:2px}
+@media (max-width:760px){.dims{grid-template-columns:1fr 1fr}.dims div{border-left:0;border-top:1px solid var(--line)}.dims div:nth-child(-n+2){border-top:0}.dims div:nth-child(even){border-left:1px solid var(--line)}}
+.r-body{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px}
+.r-body h3{font-size:22px;letter-spacing:-.01em;margin-bottom:16px}
+.flag{border:1px solid var(--line);border-radius:var(--r-card);padding:16px 18px;margin-bottom:12px}
+.flag strong{display:block;font-weight:500;margin-bottom:4px}
+.flag p{margin:0;font-size:15px;color:var(--soft);line-height:1.55}
+.flag.risk{border-color:var(--risk);background:var(--risk-wash)}
+.flag.risk strong{color:var(--risk)}
+.next ol{margin:0;padding:0;list-style:none;counter-reset:s}
+.next li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:8px;padding:12px 0;border-top:1px solid var(--line);font-size:15.5px;line-height:1.55}
+.next li:first-child{border-top:0;padding-top:0}
+.next li::before{content:counter(s);font-size:13px;font-weight:500;color:var(--accent);padding-top:2px}
+@media (max-width:860px){.r-body{grid-template-columns:1fr;gap:40px}}
+.r-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:48px;padding-top:32px;border-top:1px solid var(--line)}
+footer{border-top:1px solid var(--line);margin-top:24px}
+footer .wrap{padding:28px 24px 40px;font-size:13.5px;color:var(--soft);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer p{margin:0;max-width:62ch}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (prefers-reduced-motion:no-preference){.radar .you{animation:grow .7s cubic-bezier(.2,.7,.2,1) both;transform-origin:190px 190px}@keyframes grow{from{transform:scale(.2);opacity:0}}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <div class="brand"><a href="https://github.com/ruslan-omarov/hacf">HACF</a> <span data-t="brandSub"></span></div>
-    <div class="lang" role="group" aria-label="Language">
-      <button type="button" data-lang="en" aria-pressed="true">EN</button>
-      <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="https://github.com/ruslan-omarov/hacf" aria-label="HACF on GitHub">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><polygon points="16,3 28.4,12 23.7,26.6 8.3,26.6 3.6,12" fill="none" stroke="currentColor" stroke-width="2"/><polygon points="16,10 21.7,14.2 19.6,21 12.4,21 10.3,14.2" fill="var(--accent)"/></svg>
+      <span>HACF <small data-t="brandSub"></small></span>
+    </a>
+    <div class="top-actions">
+      <a class="ghost" href="https://github.com/ruslan-omarov/hacf" data-t="method"></a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+      </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <div id="intro" class="hero">
-    <h1 data-t="h1"></h1>
-    <p data-t="introP"></p>
-    <p class="privacy" data-t="privacy"></p>
-    <div class="actions"><button class="btn" id="start" type="button" data-t="start"></button></div>
+<main class="wrap">
+  <div id="intro">
+    <section class="hero">
+      <div>
+        <h1 data-t="h1"></h1>
+        <p class="lede" data-t="introP"></p>
+        <div class="actions">
+          <button class="btn" id="start" type="button"><span data-t="start"></span>
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <span class="meta-line" data-t="minutes"></span>
+        </div>
+      </div>
+      <svg class="ladder" viewBox="0 0 400 330" role="img" id="ladder"></svg>
+    </section>
+    <section class="how">
+      <div><span class="n">1</span><h3 data-t="how1h"></h3><p data-t="how1p"></p></div>
+      <div><span class="n">2</span><h3 data-t="how2h"></h3><p data-t="how2p"></p></div>
+      <div class="privacy-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+        <div><h3 style="margin-top:0" data-t="how3h"></h3><p data-t="privacy"></p></div></div>
+    </section>
   </div>
 
-  <form id="form" hidden>
+  <form id="form" class="narrow" hidden>
     <div class="progress" aria-hidden="true"><div class="bar"><div class="fill" id="fill"></div></div>
       <div class="meta"><span id="count"></span><span data-t="minutes"></span></div></div>
     <section class="part"><h2 data-t="partA"></h2><p class="lead" data-t="partALead"></p><div id="selfQs"></div></section>
     <section class="part"><h2 data-t="partB"></h2><p class="lead" data-t="partBLead"></p><div id="scenQs"></div></section>
-    <div class="actions"><button class="btn" type="submit" data-t="see"></button><span class="hint" id="missing" role="status"></span></div>
+    <div class="submit-row"><button class="btn" type="submit" data-t="see"></button><span class="hint" id="missing" role="status"></span></div>
   </form>
 
   <section id="result" aria-live="polite">
-    <p class="sub" style="margin:0" data-t="yourProfile"></p>
-    <div class="notation" id="notation"></div>
-    <p class="sub" id="levelLine"></p>
-    <div class="gates">
-      <h3 data-t="gatesH"></h3>
-      <div id="dims"></div>
-      <p class="legend" data-t="legend"></p>
+    <div class="r-head">
+      <div>
+        <p class="kicker" data-t="yourProfile"></p>
+        <h2 class="notation" id="notation" tabindex="-1"></h2>
+        <p class="r-sub" id="levelLine"></p>
+      </div>
+      <div>
+        <svg class="radar" id="radar" viewBox="-80 0 540 380" role="img"></svg>
+        <div class="r-legend"><span><i></i><span data-t="legYou"></span></span><span><i class="g"></i><span data-t="legGate"></span></span></div>
+      </div>
     </div>
-    <div class="flags" id="flags"></div>
-    <div class="next"><h3 data-t="nextH"></h3><ol id="next"></ol></div>
-    <div class="actions">
+    <div class="dims" id="dims"></div>
+    <div class="r-body">
+      <div><h3 data-t="flagsH"></h3><div id="flags"></div></div>
+      <div class="next"><h3 data-t="nextH"></h3><ol id="next"></ol></div>
+    </div>
+    <div class="r-actions">
       <button class="btn" type="button" id="dl" data-t="download"></button>
-      <button class="btn secondary" type="button" id="again" data-t="again"></button>
+      <button class="btn quiet" type="button" id="again" data-t="again"></button>
+      <span class="hint" data-t="dlHint"></span>
     </div>
-    <p class="hint" data-t="dlHint"></p>
   </section>
+</main>
 
-  <footer><p data-t="footer"></p></footer>
-</div>
+<footer><div class="wrap"><p data-t="footer"></p><a href="https://doi.org/10.5281/zenodo.24108829">DOI 10.5281/zenodo.24108829</a></div></footer>
 
 <script>
 "use strict";
@@ -257,6 +348,49 @@ function score(ans){
   return {s,ev,level,flags,nextGate,gaps};
 }
 
+const T2={
+en:{method:"Method on GitHub",how1h:"Answer 30 questions",how1p:"Fifteen statements about how you work with AI, then fifteen short workplace scenarios.",how2h:"See your profile",how2p:"A level, five dimension scores, risk flags and concrete next steps — the same scoring rules organisations use.",how3h:"Private by design",
+flagsH:"What stands out",noFlags:"No risk flags. Your use of AI does not outrun your judgment or responsibility.",legYou:"You",legGate:"Next level requires",
+ladderNote:"self-check confirms up to here",levelsShort:["Unaware","Aware","User","Practitioner","Builder","Leader"]},
+ru:{method:"Методика на GitHub",how1h:"Ответьте на 30 вопросов",how1p:"Пятнадцать утверждений о том, как вы работаете с ИИ, и пятнадцать коротких рабочих ситуаций.",how2h:"Получите профиль",how2p:"Уровень, баллы по пяти измерениям, флаги риска и конкретные шаги — по тем же правилам, что и в оценке организаций.",how3h:"Приватно по устройству",
+flagsH:"На что обратить внимание",noFlags:"Флагов риска нет: использование ИИ не опережает ваше суждение и ответственность.",legYou:"Вы",legGate:"Требование следующего уровня",
+ladderNote:"самопроверка подтверждает до этого уровня",levelsShort:["Неосведомлённый","Осведомлённый","Пользователь","Практик","Создатель","Лидер"]}};
+Object.keys(T2).forEach(k=>Object.assign(T[k],T2[k]));
+const NS="http://www.w3.org/2000/svg";
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function drawLadder(){
+  const L=T[lang];let g="";
+  for(let i=0;i<6;i++){
+    const y=280-i*48-(i>=3?26:0), x=20+i*22, w=380-x, reach=i<=2;
+    g+=`<rect class="step${reach?" reach":""}" x="${x}" y="${y}" width="${w}" height="40" rx="6"/>`+
+       `<text class="lvl" x="${x+16}" y="${y+25}"${reach?' style="fill:var(--accent)"':""}>L${i}</text>`+
+       `<text class="nm" x="${x+52}" y="${y+25}">${esc(L.levelsShort[i])}</text>`;
+  }
+  g+=`<line x1="20" y1="171" x2="380" y2="171" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="3 4"/><text class="note" x="380" y="163" text-anchor="end">${esc(L.ladderNote)}</text>`;
+  const svg=$("#ladder");svg.innerHTML=g;svg.setAttribute("aria-label",L.levelsShort.map((n,i)=>"L"+i+" "+n).join(", "));
+}
+
+function radarPts(vals,r=130,cx=190,cy=190){
+  return DIMS.map((d,i)=>{const a=-Math.PI/2+i*2*Math.PI/5, v=(vals[d]||0)/5*r;return [cx+v*Math.cos(a),cy+v*Math.sin(a)]});
+}
+function drawRadar(r){
+  const L=T[lang];let g="";
+  for(let k=1;k<=5;k++){g+=`<polygon class="grid" points="${radarPts(Object.fromEntries(DIMS.map(d=>[d,k]))).map(p=>p.join(",")).join(" ")}"/>`}
+  radarPts(Object.fromEntries(DIMS.map(d=>[d,5]))).forEach(([x,y])=>{g+=`<line class="axis" x1="190" y1="190" x2="${x}" y2="${y}"/>`});
+  const gate=Object.fromEntries(DIMS.map(d=>[d,r.nextGate[d]||0]));
+  if(r.level<5)g+=`<polygon class="gate" points="${radarPts(gate).map(p=>p.join(",")).join(" ")}"/>`;
+  const you=radarPts(r.s);
+  g+=`<polygon class="you" points="${you.map(p=>p.join(",")).join(" ")}"/>`;
+  you.forEach(([x,y])=>{g+=`<circle class="dot" cx="${x}" cy="${y}" r="3.5"/>`});
+  radarPts(Object.fromEntries(DIMS.map(d=>[d,6.05]))).forEach(([x,y],i)=>{const d=DIMS[i];
+    const anchor=Math.abs(x-190)<8?"middle":x>190?"start":"end";
+    const name=window.innerWidth<600?d:L.dims[d][0];
+    g+=`<text class="lab" x="${x}" y="${y+(y<190?-2:12)}" text-anchor="${anchor}">${esc(name)} ${r.s[d]}</text>`});
+  const svg=$("#radar");svg.innerHTML=g;
+  svg.setAttribute("aria-label",DIMS.map(d=>L.dims[d][0]+" "+r.s[d]+"/5").join(", "));
+}
+
 function render(){
   const L=T[lang];document.documentElement.lang=lang;
   document.querySelectorAll("[data-t]").forEach(el=>{const v=L[el.dataset.t];if(typeof v==="string")el.innerHTML=v});
@@ -266,39 +400,41 @@ function render(){
     L.scale.map((lab,v)=>`<label><input type="radio" name="A${i+1}" value="${v}"${keep["A"+(i+1)]==v?" checked":""}><span><b>${v}</b>${lab}</span></label>`).join("")}</div></fieldset></div>`).join("");
   $("#scenQs").innerHTML=L.scen.map(([q,opts],i)=>`<div class="q"><fieldset><legend><span class="num">B${i+1}</span>${q}</legend><div class="opts">${
     opts.map((o,j)=>{const v="abcd"[j];return `<label><input type="radio" name="B${i+1}" value="${v}"${keep["B"+(i+1)]===v?" checked":""}><span>${o}</span></label>`}).join("")}</div></fieldset></div>`).join("");
-  progress();
+  drawLadder();progress();
   if(last)showResult(last);
 }
 function answers(){const a={};new FormData($("#form")).forEach((v,k)=>a[k]=k[0]==="A"?Number(v):v);return a}
 function progress(){const n=Object.keys(answers()).length;$("#fill").style.width=(n/30*100)+"%";$("#count").textContent=T[lang].answered(n,30)}
 function showResult(r){
   const L=T[lang];last=r;
-  $("#notation").innerHTML=`HACF <span class="lvl">L${r.level}</span> [${DIMS.map(d=>d+r.s[d]).join(" · ")}]`;
+  $("#notation").innerHTML=`HACF <span class="lvl">L${r.level}</span> <span style="white-space:nowrap">[${DIMS.map(d=>d+r.s[d]).join(" · ")}]</span>`;
   $("#levelLine").textContent=L.level(r.level,L.names[r.level]);
-  $("#dims").innerHTML=DIMS.map(d=>{const g=r.nextGate[d];return `<div class="dim"><div class="name">${L.dims[d][0]}<small>${L.dims[d][1]} · ${L.src[r.ev[d]]}</small></div>
-    <div class="track" role="img" aria-label="${L.dims[d][0]} ${r.s[d]}/5${g!=null?", ≥"+g:""}"><div class="val" style="width:${r.s[d]*20}%"></div>${g!=null?`<div class="gate" style="left:calc(${g*20}% - 1px)"></div>`:""}</div>
-    <div class="score">${r.s[d]}</div></div>`}).join("");
-  $("#flags").innerHTML=r.flags.map(f=>`<div class="flag${f.startsWith("RISK")?" risk":""}"><strong>${L.flagT[f][0]}</strong>${L.flagT[f][1]}</div>`).join("");
+  drawRadar(r);
+  $("#dims").innerHTML=DIMS.map(d=>{const g=r.nextGate[d];return `<div><b>${r.s[d]}<small> / 5</small></b><span>${L.dims[d][0]}</span><em>${L.dims[d][1]} · ${L.src[r.ev[d]]}${g!=null&&r.s[d]<g?` · ≥${g}`:""}</em></div>`}).join("");
+  const risk=r.flags.filter(f=>f.startsWith("RISK")), other=r.flags.filter(f=>!f.startsWith("RISK"));
+  $("#flags").innerHTML=(risk.length?"":`<div class="flag"><strong>✓</strong><p>${L.noFlags}</p></div>`)+
+    risk.concat(other).map(f=>`<div class="flag${f.startsWith("RISK")?" risk":""}"><strong>${L.flagT[f][0]}</strong><p>${L.flagT[f][1]}</p></div>`).join("");
   const steps=[];
-  if(r.flags.includes("RISK-J")||r.flags.includes("RISK-R"))steps.push(L.riskStep);
+  if(risk.length)steps.push(L.riskStep);
   r.gaps.forEach(([d,v])=>steps.push(L.needs(L.dims[d][0],v)));
   if(r.level>=2&&!r.gaps.length)steps.push(L.atTop);
   steps.push(L.toL3);
   $("#next").innerHTML=steps.map(s=>`<li>${s}</li>`).join("");
 }
 document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>{lang=b.dataset.lang;render()}));
-$("#start").addEventListener("click",()=>{$("#intro").hidden=true;$("#form").hidden=false;$("#form").querySelector("input").focus()});
+$("#start").addEventListener("click",()=>{$("#intro").hidden=true;$("#form").hidden=false;window.scrollTo({top:0});$("#form").querySelector("input").focus({preventScroll:true})});
 $("#form").addEventListener("change",progress);
 $("#form").addEventListener("submit",e=>{e.preventDefault();const a=answers();const miss=30-Object.keys(a).length;
   if(miss){$("#missing").textContent=T[lang].missing(miss);const first=[...Array(15)].map((_,i)=>"A"+(i+1)).concat([...Array(15)].map((_,i)=>"B"+(i+1))).find(k=>!(k in a));
     document.querySelector(`input[name="${first}"]`).closest(".q").scrollIntoView({behavior:"smooth",block:"center"});return}
-  $("#missing").textContent="";const r=score(a);r.raw=a;$("#form").hidden=true;$("#result").classList.add("show");showResult(r);window.scrollTo({top:0});$("#notation").focus?.()});
+  $("#missing").textContent="";const r=score(a);r.raw=a;$("#form").hidden=true;$("#result").classList.add("show");showResult(r);window.scrollTo({top:0});$("#notation").focus({preventScroll:true})});
 $("#again").addEventListener("click",()=>{last=null;$("#result").classList.remove("show");$("#form").reset();$("#form").hidden=false;progress();window.scrollTo({top:0})});
 $("#dl").addEventListener("click",()=>{const a=last.raw;const out=[{id:"self-check",department:"",role:"",scope:"Self",
   self:Object.fromEntries(Object.entries(a).filter(([k])=>k[0]==="A")),scenario:Object.fromEntries(Object.entries(a).filter(([k])=>k[0]==="B")),
   hacf_selfcheck:{version:"0.1.0",date:new Date().toISOString().slice(0,10),profile:last.s,level:last.level,flags:last.flags}}];
   const url=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:"application/json"}));
   const l=Object.assign(document.createElement("a"),{href:url,download:"hacf-self-check.json"});document.body.appendChild(l);l.click();l.remove();URL.revokeObjectURL(url)});
+let rw=window.innerWidth;window.addEventListener("resize",()=>{if((rw<600)!==(window.innerWidth<600)&&last)drawRadar(last);rw=window.innerWidth});
 render();
 </script>
 </body>
