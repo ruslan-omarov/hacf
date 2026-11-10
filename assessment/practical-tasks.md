@@ -12,6 +12,8 @@ Practical tasks produce **E3** evidence; portfolio review produces **E4**. Parti
 
 ## Task T1 — Analysis & recommendation (for L2→L3) · 60 min
 
+**Ready-made pack:** `python tools/make_task_t1.py --seed <any number> --out t1_pack` generates a unique dataset, market note, participant brief and a confidential assessor key. Use a new seed for every round so answers never leak. The pack contains six planted defects (duplicates, currency mix-up, impossible date, personal data, outdated figure, injected instruction); in every variant, missing them changes which region looks strongest.
+
 **Material:** a sales dataset (≈500 rows) with three planted errors (duplicates, a currency mix-up, an impossible date); a one-page market note containing one outdated figure; customer names and phone numbers in one column.
 
 **Assignment:** Using AI, produce a one-page recommendation to management on where to focus next quarter, with numbers.
