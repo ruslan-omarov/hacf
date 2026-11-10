@@ -1,0 +1,40 @@
+{
+  "framework": "HACF - Human-AI Capability Framework",
+  "version": "0.1.0",
+  "dimensions": {
+    "K": "Knowledge",
+    "A": "Application",
+    "C": "Creation",
+    "J": "Judgment",
+    "R": "Responsibility"
+  },
+  "score_range": [0, 5],
+  "scopes": ["Self", "Team", "Organisation", "Ecosystem"],
+  "evidence_levels": {
+    "E1": {"name": "Self-declaration", "max_level": 2},
+    "E2": {"name": "Knowledge check", "max_level": 2},
+    "E3": {"name": "Practical task", "max_level": 3},
+    "E4": {"name": "Work artefact", "max_level": 5},
+    "E5": {"name": "Sustained outcome", "max_level": 5}
+  },
+  "levels": [
+    {"level": 0, "name": "Unaware", "mode": null, "gates": {}, "min_scope": "Self"},
+    {"level": 1, "name": "Aware", "mode": "Observe", "gates": {"K": 1, "J": 1, "R": 1}, "min_scope": "Self"},
+    {"level": 2, "name": "User", "mode": "Ask", "gates": {"K": 2, "A": 2, "J": 2, "R": 2}, "min_scope": "Self"},
+    {"level": 3, "name": "Practitioner", "mode": "Collaborate", "gates": {"K": 2, "A": 3, "C": 2, "J": 3, "R": 3}, "min_scope": "Self"},
+    {"level": 4, "name": "Builder", "mode": "Delegate & Orchestrate", "gates": {"K": 3, "A": 3, "C": 4, "J": 3, "R": 3}, "min_scope": "Team"},
+    {"level": 5, "name": "Leader", "mode": "Govern", "gates": {"K": 3, "A": 3, "C": 3, "J": 4, "R": 4}, "min_scope": "Organisation"}
+  ],
+  "flags": {
+    "RISK-J": "A - J >= 2",
+    "RISK-R": "max(A, C) - R >= 2",
+    "UNTAPPED": "K - A >= 2",
+    "CEILING": "all gates of the next level met except exactly one dimension",
+    "EVIDENCE-CAP": "gates and scope of a higher level are met, but evidence is too weak to report it",
+    "PROVISIONAL": "evidence == E1"
+  },
+  "org_metrics": {
+    "hacf_index": "mean(level) / 5 * 100",
+    "min_group_size": 5
+  }
+}
