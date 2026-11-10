@@ -10,6 +10,13 @@ All notable changes to HACF are documented here. Versioning follows the [three-l
 - Examples: target role profiles; regulatory mapping (EU AI Act Art. 4, Kazakhstan AI Law, ISO/IEC 42001); crosswalk to DigComp 3.0, SFIA and others.
 - Tools: reference scoring script (`tools/hacf_score.py`), machine-readable spec, synthetic sample data, unit tests.
 - White paper, report templates, governance and contribution rules.
+- Deterministic scoring rules (`assessment/scoring-rules.md`) and tool `tools/hacf_assess.py` converting raw instrument results into dimension scores; scenario answer key.
+- Quick start (two-week pilot), assessor guide with calibration, pre-registered validation protocol, worked example, privacy-notice template, references.
+- Continuous integration: unit tests, end-to-end sample run, and a consistency test that every example role profile produces its stated target level.
+
+### Changed (before first release, after internal review)
+- L5 gate for Creation lowered from C≥3 to C≥2: leaders must have built and documented their own AI workflows, not build for others. Resolves an inconsistency where the executive role profile could not reach its target level.
+- Role profiles corrected so that the stated target level always follows from the gates (Legal C2, People manager C2, IT/security lead C4, Executive C2; oversight operator explicitly L2 + oversight profile).
 
 ### Known limitations
 - Gate thresholds and descriptors are not yet empirically validated.

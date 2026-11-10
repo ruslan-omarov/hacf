@@ -5,6 +5,7 @@
 [![Version](https://img.shields.io/badge/version-0.1.0--public--draft-blue)](CHANGELOG.md)
 [![License: CC BY 4.0](https://img.shields.io/badge/framework-CC%20BY%204.0-lightgrey)](LICENSE)
 [![Code: MIT](https://img.shields.io/badge/tools-MIT-green)](LICENSE-CODE)
+[![tests](https://github.com/ruslan-omarov/hacf/actions/workflows/tests.yml/badge.svg)](https://github.com/ruslan-omarov/hacf/actions/workflows/tests.yml)
 
 > Access to AI is becoming a commodity. The ability to use, direct, build and govern it is not.
 > **Human capability × AI capability = professional advantage.**
@@ -74,6 +75,13 @@ HACF L3 [K3 · A4 · C2 · J3 · R3]  evidence: E3  scope: Team
 
 See [Enterprise application](docs/04-enterprise.md) and the [scoring tool](tools/).
 
+## Use it in two weeks
+
+1. Read the [Quick Start](docs/09-quick-start.md) — a day-by-day pilot for one team.
+2. Run the instruments: [self-assessment and scenario check](assessment/question-bank.md), [practical task](assessment/practical-tasks.md).
+3. Score deterministically: `python tools/hacf_assess.py raw.json --out people.csv` → `python tools/hacf_score.py people.csv --roles tools/sample/role_profiles.json --out report.md`.
+4. See a full [worked example](docs/examples/worked-example.md) from raw answers to a development plan.
+
 ## Repository map
 
 | Path | Content |
@@ -88,14 +96,19 @@ See [Enterprise application](docs/04-enterprise.md) and the [scoring tool](tools
 | [docs/06-regulatory-mapping.md](docs/06-regulatory-mapping.md) | EU AI Act, Kazakhstan, ISO/IEC 42001 |
 | [docs/07-crosswalk.md](docs/07-crosswalk.md) | Mapping to DigComp, SFIA, AWS and others |
 | [docs/08-versioning-and-longevity.md](docs/08-versioning-and-longevity.md) | How HACF stays valid for decades |
+| [docs/09-quick-start.md](docs/09-quick-start.md) | Two-week pilot, day by day |
+| [docs/10-assessor-guide.md](docs/10-assessor-guide.md) | Calibration, scoring discipline, interview prompts |
+| [docs/11-validation-protocol.md](docs/11-validation-protocol.md) | Pre-registered plan to validate thresholds |
+| [docs/examples/worked-example.md](docs/examples/worked-example.md) | Three participants scored end to end |
 | [docs/glossary.md](docs/glossary.md) | Terms |
-| [assessment/](assessment/) | Question bank, practical tasks, machine-readable spec |
+| [docs/references.md](docs/references.md) | Sources |
+| [assessment/](assessment/) | Question bank, practical tasks, deterministic scoring rules, machine-readable spec |
 | [tools/](tools/) | Open-source scoring script with sample data |
-| [templates/](templates/) | Individual and enterprise report templates |
+| [templates/](templates/) | Individual and enterprise reports, privacy notice |
 
 ## Status
 
-**v0.1.0 — Public Draft.** The structure is complete; indicators and thresholds are hypotheses awaiting empirical validation. Organisations piloting HACF are invited to share anonymised results — see [CONTRIBUTING.md](CONTRIBUTING.md) and the [research agenda](WHITEPAPER.md#7-research-agenda).
+**v0.1.0 — Public Draft.** The structure is complete and internally consistent (enforced by automated tests); indicators and thresholds are hypotheses to be confirmed or changed under a [pre-registered validation protocol](docs/11-validation-protocol.md). Organisations piloting HACF are invited to share anonymised results — see [CONTRIBUTING.md](CONTRIBUTING.md) and the [research agenda](WHITEPAPER.md#7-research-agenda).
 
 HACF is **not** a certification and **not** a legal compliance guarantee. It is an open methodology.
 
