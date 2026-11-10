@@ -16,7 +16,7 @@
 | 1 | Agree purpose with the sponsor: **development, not evaluation of performance**. Pick role profiles from [05](05-role-profiles.md) and adjust. | One-page charter |
 | 2 | Send the privacy notice and invitation. Explain why: the goal is to target training and reduce AI risk. | Informed participants |
 | 3–5 | Everyone completes self-assessment §A and scenario check §B (35 min, any survey tool). Export answers. | Raw answers |
-| 6 | Prepare task T1 materials from your own domain, with the planted defects described in [practical-tasks.md](../assessment/practical-tasks.md). | Task pack |
+| 6 | Generate a unique T1 pack: `python tools/make_task_t1.py --seed <number> --out t1_pack`. Give participants only the `participant` folder; keep `assessor/key.md` private. (Or build materials from your own domain with the same defects, see [practical-tasks.md](../assessment/practical-tasks.md).) | Task pack |
 | 7–9 | Participants with provisional A≥2 take T1 (60 min). Score with the rubric; double-score 20% for calibration ([assessor guide](10-assessor-guide.md)). | Rubric scores |
 | 10 | Put raw results into the JSON format of `tools/sample/raw_results.json`. Run: `python tools/hacf_assess.py raw.json --out people.csv` then `python tools/hacf_score.py people.csv --roles tools/sample/role_profiles.json --out report.md --results results.csv` | Profiles and team report |
 | 11 | Write individual reports with [the template](../templates/individual-report.md); share each one privately. | Personal development plans |
