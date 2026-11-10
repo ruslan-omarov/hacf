@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use HACF, please cite it as below."
+title: "HACF — Human–AI Capability Framework"
+abstract: "An open, vendor-neutral framework for measuring and developing human capability to create value with artificial intelligence safely, with six levels, five dimensions, gate-based scoring and enterprise application."
+type: software
+authors:
+  - family-names: Omarov
+    given-names: Ruslan
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+version: 0.1.0
+date-released: 2026-11-10
+license: CC-BY-4.0
+repository-code: "https://github.com/ruslan-omarov/hacf"
+keywords:
+  - artificial intelligence
+  - AI literacy
+  - competency framework
+  - workforce development
+  - human-AI collaboration
+  - AI governance
+  - capability assessment
