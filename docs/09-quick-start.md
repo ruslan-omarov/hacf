@@ -7,7 +7,7 @@
 - A sponsor (head of the team or HR) and one or two assessors.
 - This repository: question bank, practical task T1, `tools/`.
 - A completed [privacy notice](../templates/privacy-notice.md).
-- Python 3.9+ on one laptop (no other software).
+- Python 3.11+ on one laptop (no other software).
 
 ## Day-by-day
 
